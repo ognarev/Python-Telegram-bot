@@ -4,6 +4,10 @@ from telegram.ext import Updater, dispatcher, CommandHandler
 from telegram.ext.filters import Filters
 from telegram.ext.messagehandler import MessageHandler
 
+from bot_answer import get_citation
+
+languges = ('ru', 'en')
+
 with open('.sensdata/tokens.json') as reader:
     data = json.load(reader)
     TELEGRAM_TOKEN = data['TELEGRAM_TOKEN']
@@ -28,7 +32,7 @@ def unknown_c(update, context): # reaction on unknown commands
     context.bot.send_message(chat_id=update.effective_chat.id, text=bot_answers["unknown"])
 
 def message_(update, context): # reaction on text message from user
-    context.bot.send_message(chat_id=update.effective_chat.id, text=bot_answers["message"])
+    context.bot.send_message(chat_id=update.effective_chat.id, text=get_citation(languges[0]))
 
 # Handlers & Dispatchers
 dispatcher = updater.dispatcher
