@@ -145,4 +145,7 @@ cython_debug/
 # Visual Studio Code editor settings
 .vscode
 
+# Sensitive data
+.sensdata
+
 # End of https://www.toptal.com/developers/gitignore/api/python
