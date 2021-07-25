@@ -7,6 +7,7 @@ from telegram.ext.messagehandler import MessageHandler
 from bot_answer import get_citation
 
 languges = ('ru', 'en')
+lang = languges[0]
 
 with open('.sensdata/tokens.json') as reader:
     data = json.load(reader)
@@ -32,7 +33,7 @@ def unknown_c(update, context): # reaction on unknown commands
     context.bot.send_message(chat_id=update.effective_chat.id, text=bot_answers["unknown"])
 
 def message_(update, context): # reaction on text message from user
-    context.bot.send_message(chat_id=update.effective_chat.id, text=get_citation(languges[0]))
+    context.bot.send_message(chat_id=update.effective_chat.id, text=get_citation(lang))
 
 # Handlers & Dispatchers
 dispatcher = updater.dispatcher
