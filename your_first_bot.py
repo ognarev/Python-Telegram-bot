@@ -29,6 +29,9 @@ def start_c(update, context): # reaction on /start
 def help_c(update, context): # reaction on /help
     context.bot.send_message(chat_id=update.effective_chat.id, text=bot_answers["help"])
 
+def uv_c(update, context): # reaction on /uv
+    context.bot.send_message(chat_id=update.effective_chat.id, text=bot_answers["uv"])
+
 def unknown_c(update, context): # reaction on unknown commands
     context.bot.send_message(chat_id=update.effective_chat.id, text=bot_answers["unknown"])
 
@@ -40,8 +43,10 @@ dispatcher = updater.dispatcher
 start_handler = CommandHandler('start', start_c)
 help_handler = CommandHandler('help', help_c)
 settings_handler = CommandHandler('settings', help_c)
-message_handler = MessageHandler(~Filters.command, message_)
+uv_handler = CommandHandler('uv', uv_c)
 unknown_handler = MessageHandler(Filters.command, unknown_c)
+message_handler = MessageHandler(~Filters.command, message_)
+
 
 dispatcher.add_handler(start_handler)
 dispatcher.add_handler(help_handler)

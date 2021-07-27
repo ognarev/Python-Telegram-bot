@@ -2,6 +2,7 @@ from forismatic import *
 
 # Return citations from forismatic
 def get_citation(lang='ru'):
+    '''Returns random citations from forismatic.com'''
     f = forismatic.ForismaticPy()
     text = f.get_Quote(lang)
     formated_text = (f"{text[0]} \n {text[1]}")
